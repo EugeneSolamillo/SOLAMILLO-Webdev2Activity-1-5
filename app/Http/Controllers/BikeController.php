@@ -19,16 +19,10 @@ class BikeController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'brand' => 'required',
-            'model' => 'required',
-            'year' => 'required|numeric',
-        ]);
+{
+    Bike::create($request->only(['brand', 'model', 'year']));
+    return redirect('/bikes')->with('success', 'Bike added!');
+}
 
-        Bike::create($request->all());
-
-        return redirect()->route('bikes.index')->with('success', 'Bike added successfully!');
-    }
 }
 
