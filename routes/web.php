@@ -1,14 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Bike; // Make sure to import the Bike model
+use App\Http\Controllers\BikeController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/bikes');
 });
 
-// Route to show all bikes
-Route::get('/bikes', function () {
-    $bikes = Bike::all(); // Get all bikes from the database
-    return view('bikes.index', compact('bikes')); // Send bikes to the view
-});
+Route::get('/bikes', [BikeController::class, 'index'])->name('bikes.index');
+Route::get('/bikes/create', [BikeController::class, 'create'])->name('bikes.create');
+Route::post('/bikes', [BikeController::class, 'store'])->name('bikes.store');
