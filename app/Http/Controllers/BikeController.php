@@ -24,20 +24,20 @@ class BikeController extends Controller
         return redirect('/bikes')->with('success', 'Bike added!');
     }
 
-    // ✅ Activity 3: Edit form
+    //Activity 3: Edit
     public function edit(Bike $bike)
     {
         return view('bikes.edit', compact('bike'));
     }
 
-    // ✅ Activity 3: Update bike
+    //Activity 3: Update
     public function update(Request $request, Bike $bike)
     {
         $bike->update($request->only(['brand', 'model', 'year']));
         return redirect()->route('bikes.index')->with('success', 'Bike updated!');
     }
 
-    // ✅ Activity 3: Delete bike
+    //Activity 3: Delete 
     public function destroy(Bike $bike)
     {
         $bike->delete();
