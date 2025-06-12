@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login'); // You can customize this view
+        return view('auth.login'); 
     }
 
     public function login(Request $request)
@@ -22,7 +22,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Invalid credentials.',
+            'email' => 'Sayop man ni Bai.',
         ])->onlyInput('email');
     }
 
